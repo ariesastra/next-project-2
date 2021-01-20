@@ -32,6 +32,7 @@ To learn more about Next.js, take a look at the following resources:
 - [React DOM](https://www.npmjs.com/package/express) - Fast, unopinionated, minimalist web framework for node.
 - [Reactstrap](https://reactstrap.github.io) - Easy to use React Bootstrap 4 components.
 - [Bootstrap](https://www.npmjs.com/package/bootstrap) - Sleek, intuitive, and powerful front-end framework for faster and easier web development.
+- [React Typed](https://www.npmjs.com/package/react-typed) - Create Auto Type Text using javascript.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
