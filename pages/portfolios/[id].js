@@ -1,35 +1,40 @@
 import React from 'react'
-import axios from 'axios'
+import {useRouter} from 'next/router'
+
+// Dependencies
+import {useGetPostsById} from '@/actions'
 
 // COMPONENT
 import BaseLayout from '@/components/layout/BaseLayout'
 import BasePage from '@/components/BasePage'
 
-const portfolio = ({data}) => {
+const portfolio = () => {
+  const router = useRouter()
+  const {data: portfolio, error, loading} = useGetPostsById(router.query.id)
 
   return (
     <BaseLayout>
-    <BasePage>
-      <h1>Im Portfolio Page</h1>
-      <h2>{data.title}</h2>
-      <p>
-        {data.body}
-      </p>
-    </BasePage>
+      <BasePage>
+        {
+          loading && <p>loading...</p>
+        }
+        {
+          error && <div className='alert alert-danger'>{error.message}</div>
+        }
+        {
+          portfolio 
+          && 
+            <>
+              <h1>Im Portfolio Page</h1>
+              <h2>{portfolio.title}</h2>
+              <p>
+                {portfolio.body}
+              </p>
+            </>
+        }
+      </BasePage>
     </BaseLayout>
   )
-}
-
-portfolio.getInitialProps = async ({query}) => {
-  let post = {}
-  try {
-      const res = await axios.get(`https://jsonplaceholder.typicode.com/posts/${query.id}`)
-      post = res.data
-  } catch (e) {
-      console.log(e);
-  }
-  // SLICE  IS AN ANOTHER WAY TO FILTER DATA FROM ARRAY
-  return { data: post }
 }
 
 export default portfolio

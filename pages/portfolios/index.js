@@ -1,21 +1,16 @@
-import React, {useEffect} from 'react'
-import axios from 'axios'
+import React from 'react'
 import Link from 'next/link'
+import useSWR from 'swr'
+
+// Dependencies
+import {useGetPosts} from '@/actions'
 
 // COMPONENTS
 import BaseLayout from '@/components/layout/BaseLayout'
 import BasePage from '@/components/BasePage'
 
-const portfolios = ({posts, appProps}) => {
-    useEffect(() => {
-        const getData = async () => {
-            const res = await fetch('/api/v1/post')
-            const data = await res.json
-            // debugger
-        }
-
-        getData()
-    }, [])
+const portfolios = () => {
+    const {data, error, loading} = useGetPosts()
 
     const renderPosts = (posts) => {
         return posts.map(post => 
@@ -35,10 +30,23 @@ const portfolios = ({posts, appProps}) => {
         <BaseLayout>
         <BasePage>
             <h1>Portfolio Pages</h1>
+            {
+                loading
+                && <p>loading...</p>
+            }
             {/* get data from _app.js using props */}
-            <ol>
-                {renderPosts(posts)}
-            </ol>
+            { 
+                data 
+                && (
+                    <>
+                        <ul> {renderPosts(data)}</ul>
+                    </>
+                )
+            }
+            {
+                error &&  <div className='alert alert-danger'>{error.message}</div>
+            }
+        {/* Styling JSX */}
         <style jsx>
         {`
             ol > li > h3{
@@ -52,18 +60,6 @@ const portfolios = ({posts, appProps}) => {
         </BasePage>
         </BaseLayout>
     ) 
-}
-
-portfolios.getInitialProps = async () => {
-    let posts = []
-    try {
-        const res = await axios.get('https://jsonplaceholder.typicode.com/posts')
-        posts = res.data
-    } catch (e) {
-        console.log(e);
-    }
-    // SLICE  IS AN ANOTHER WAY TO FILTER DATA FROM ARRAY
-    return {posts: posts.slice(0, 10)}
 }
 
 export default portfolios
