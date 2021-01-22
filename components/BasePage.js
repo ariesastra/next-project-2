@@ -1,11 +1,17 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export default class BasePage extends Component {
-    render() {
-        return (
-            <div>
-                <h2>Component Base Page</h2>
-            </div>
-        )
-    }
+// STYLE
+import {Container} from 'reactstrap'
+
+const BasePage = (props) => {
+    const {className= '', children} = props
+    return (
+        <div className={`base-page ${className}`}>
+            <Container>
+                {children}
+            </Container>
+        </div>
+    )
 }
+
+export default BasePage

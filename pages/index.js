@@ -1,30 +1,29 @@
 import React from 'react'
 
 // COMPONENTS
-import BaseLayout from '../components/layout/BaseLayout'
+import BaseLayout from '@/components/layout/BaseLayout'
 
 // STYLE
 import { Container, Row, Col } from 'reactstrap';
 import Typed from 'react-typed'
 
-const ROLES = [
-                'Developer',
-                'Tech Lover',
-                'Team Player',
-                'Creator',
-                'React.js',
-                'Angular',
-              ]
 
-class Index extends React.Component {
-  render(){
+const Index = () => {
+  const ROLES = [
+                  'Developer',
+                  'Tech Lover',
+                  'Team Player',
+                  'Creator',
+                  'React.js',
+                  'Angular',
+  ]
+
     return(
       <BaseLayout className="cover">
         <div className="main-section">
           <div className="background-image">
             <img src="/images/background-index.png" />
           </div>
-
           <Container>
             <Row>
               <Col md="6">
@@ -69,7 +68,6 @@ class Index extends React.Component {
         </div>
       </BaseLayout>
     )
-  }
 }
 
 export default Index

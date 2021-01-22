@@ -1,14 +1,17 @@
 import React, { Component } from 'react'
 
 // COMPONENTS
-import BaseLayout from '../components/layout/BaseLayout'
+import BaseLayout from '@/components/layout/BaseLayout'
+import BasePage from '@/components/BasePage'
 
-export default class about extends Component {
-    render() {
-        return (
-            <BaseLayout>
+const about = () => {
+    return (
+        <BaseLayout>
+            <BasePage>
                 <h1>About Page</h1>
-            </BaseLayout>
-        )
-    }
+            </BasePage>
+        </BaseLayout>
+    )
 }
+
+export default about

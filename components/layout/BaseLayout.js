@@ -1,7 +1,7 @@
 import React from 'react'
 
 // COMPONENTS
-import Header from '../shared/Header'
+import Header from '@/components/shared/Header'
 
 const BaseLayout = (props) => {
     const {className, children} = props
