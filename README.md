@@ -34,6 +34,8 @@ To learn more about Next.js, take a look at the following resources:
 - [Bootstrap](https://www.npmjs.com/package/bootstrap) - Sleek, intuitive, and powerful front-end framework for faster and easier web development.
 - [React Typed](https://www.npmjs.com/package/react-typed) - Create Auto Type Text using javascript.
 - [SWR Next](https://www.npmjs.com/package/swr) - SWR is a React Hooks library for remote data fetching.
+- [Auth0](https://github.com/auth0/nextjs-auth0) - Auth0 SDK for signing in to your Next.js applications.
+- [dotenv](https://www.npmjs.com/package/dotenv) - Dotenv is a zero-dependency module that loads environment variables from a .env file into process.env.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 

@@ -37,11 +37,11 @@ const BSNavLink = (props) => {
 }
 
 const LoginLink = () => {
-    return <span className='nav-link port-navbar-link'>Login</span>
+    return <BSNavLink NavTitle='Login' href='/api/v1/login' />
 }
 
 const LogoutLink = () => 
-    <span className='nav-link port-navbar-link'>Logout</span>
+    <BSNavLink NavTitle='Logout' href='/api/v1/logout' />
 
 
 const Header = () =>  {
