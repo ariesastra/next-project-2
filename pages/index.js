@@ -1,5 +1,8 @@
 import React from 'react'
 
+// DEPENDECIES
+import {useGetUser} from '@/actions/user'
+
 // COMPONENTS
 import BaseLayout from '@/components/layout/BaseLayout'
 
@@ -18,8 +21,14 @@ const Index = () => {
                   'Angular',
   ]
 
+  const {data, loading} = useGetUser()
+
     return(
-      <BaseLayout className="cover">
+      <BaseLayout 
+        className="cover"
+        user={data}
+        loading={loading}
+      >
         <div className="main-section">
           <div className="background-image">
             <img src="/images/background-index.png" />

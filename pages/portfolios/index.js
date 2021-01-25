@@ -2,8 +2,10 @@ import React from 'react'
 import Link from 'next/link'
 import useSWR from 'swr'
 
-// Dependencies
+
+// DEPENDENCIES
 import {useGetPosts} from '@/actions'
+import {useGetUser} from '@/actions/user'
 
 // COMPONENTS
 import BaseLayout from '@/components/layout/BaseLayout'
@@ -11,6 +13,7 @@ import BasePage from '@/components/BasePage'
 
 const portfolios = () => {
     const {data, error, loading} = useGetPosts()
+    const {data: dataUser, loading: loadingUser} = useGetUser()
 
     const renderPosts = (posts) => {
         return posts.map(post => 
@@ -27,7 +30,10 @@ const portfolios = () => {
     }
 
     return (
-        <BaseLayout>
+        <BaseLayout
+            user={dataUser}
+            loading={loadingUser}
+        >
         <BasePage>
             <h1>Portfolio Pages</h1>
             {
@@ -46,17 +52,17 @@ const portfolios = () => {
             {
                 error &&  <div className='alert alert-danger'>{error.message}</div>
             }
-        {/* Styling JSX */}
-        <style jsx>
-        {`
-            ol > li > h3{
-                font-size: 20px
-            }
-            ol > li > p {
-                font-size: 14px
-            }
-        `}
-        </style>
+            {/* Styling JSX */}
+            <style jsx>
+            {`
+                ol > li > h3{
+                    font-size: 20px
+                }
+                ol > li > p {
+                    font-size: 14px
+                }
+            `}
+            </style>
         </BasePage>
         </BaseLayout>
     ) 

@@ -8,7 +8,6 @@ import {
   NavbarToggler,
   Nav,
   NavItem,
-  NavbarText
 } from 'reactstrap'
 import Typed from 'react-typed'
 
@@ -37,14 +36,14 @@ const BSNavLink = (props) => {
 }
 
 const LoginLink = () => {
-    return <BSNavLink NavTitle='Login' href='/api/v1/login' />
+    return <a href='/api/v1/login' target="_self" className='nav-link port-navbar-link'>Login</a>
 }
 
 const LogoutLink = () => 
     <BSNavLink NavTitle='Logout' href='/api/v1/logout' />
 
 
-const Header = () =>  {
+const Header = ({user, loading}) =>  {
     const [isOpen, setIsOpen] = useState(false)
     const toggle = () => setIsOpen(!isOpen)
 
@@ -63,26 +62,52 @@ const Header = () =>  {
                         <NavItem className="port-navbar-item">
                             <BSNavLink href="/" NavTitle="Homepage" />
                         </NavItem>
-                        <NavItem className="port-navbar-item">
+                        {/* <NavItem className="port-navbar-item">
                             <BSNavLink href="/about" NavTitle="About" />
-                        </NavItem >
+                        </NavItem > */}
                         <NavItem className="port-navbar-item">
                             <BSNavLink href="/portfolios" NavTitle="Portfolios" />
                         </NavItem>
-                        <NavItem className="port-navbar-item">
+                        {/* <NavItem className="port-navbar-item">
                             <BSNavLink href="/blogs" NavTitle="Blogs" />
                         </NavItem>
                         <NavItem className="port-navbar-item">
                             <BSNavLink href="/cv" NavTitle="CV" />
+                        </NavItem> */}
+                        <NavItem className="port-navbar-item">
+                            <BSNavLink href="/secret" NavTitle="Secret" />
+                        </NavItem>
+                        <NavItem className="port-navbar-item">
+                            <BSNavLink href="/secretssr" NavTitle="Secret SSR" />
+                        </NavItem>
+                        <NavItem className="port-navbar-item">
+                            <BSNavLink href="/onlyadmin" NavTitle="Admin" />
+                        </NavItem>
+                        <NavItem className="port-navbar-item">
+                            <BSNavLink href="/onlyadminssr" NavTitle="Admin SSR" />
                         </NavItem>
                     </Nav>
                     <Nav navbar>
-                        <NavItem className='port-navbar-item pointer'>
-                            <LoginLink />
-                        </NavItem>
-                        <NavItem className='port-navbar-item pointer'>
-                            <LogoutLink />
-                        </NavItem>
+                        {
+                            !loading
+                            &&
+                            <>
+                                {
+                                    user
+                                    &&
+                                    <NavItem className='port-navbar-item pointer'>
+                                        <LogoutLink />
+                                    </NavItem>
+                                }
+                                {
+                                    !user 
+                                    &&
+                                    <NavItem className='port-navbar-item pointer'>
+                                        <LoginLink />
+                                    </NavItem>
+                                }
+                            </>
+                        }
                     </Nav>
                 </Collapse>
             </Navbar>
